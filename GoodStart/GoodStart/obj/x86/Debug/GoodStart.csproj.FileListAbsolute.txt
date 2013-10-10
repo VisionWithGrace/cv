@@ -1,0 +1,13 @@
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\bin\Debug\GoodStart.exe
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\bin\Debug\GoodStart.pdb
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\MainWindow.baml
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\App.g.cs
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart_MarkupCompile.cache
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart.g.resources
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\KinectDepthApplication1.Properties.Resources.resources
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart.exe
+C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart.pdb
