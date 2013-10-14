@@ -99,24 +99,24 @@ namespace KinectDepthApplication1
                         if (depth >= 0 && depth < 4000)
                         {
                             // Apply the intensity to the color channels
-                            pixels[colorIndex + BlueIndex] = intensity; //blue
-                            pixels[colorIndex + GreenIndex] = intensity; //green
+                            pixels[colorIndex + BlueIndex] = (byte)(255-intensity); //blue
+                            pixels[colorIndex + GreenIndex] = 0; //green
                             pixels[colorIndex + RedIndex] = intensity; //red
-                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/4; // alpha
                         }
                         else if (depth == -1)
                         {
-                            pixels[colorIndex + BlueIndex] = 255; //blue
-                            pixels[colorIndex + GreenIndex] = 0; //green
+                            pixels[colorIndex + BlueIndex] = 0; //blue
+                            pixels[colorIndex + GreenIndex] = 255; //green
                             pixels[colorIndex + RedIndex] = 0; //red
-                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/4; // alpha
                         }
                         else
                         {
                             pixels[colorIndex + BlueIndex] = 0; //blue
                             pixels[colorIndex + GreenIndex] = 0; //green
                             pixels[colorIndex + RedIndex] = 0; //red
-                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/4; // alpha
                         }
                     }
                     receivedData = true;
