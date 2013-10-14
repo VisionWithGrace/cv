@@ -13,6 +13,8 @@ namespace KinectDepthApplication1
         //IMPORTANT NOTE: You can pass the device ID here, in case more than one Kinect device is connected.
         KinectSensor sensor = KinectSensor.KinectSensors.First();
         short[] rawDepthData;
+        byte[] colorPixels;
+        WriteableBitmap colorBitmap;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +26,41 @@ namespace KinectDepthApplication1
 
             sensor.DepthStream.Enable();
             sensor.DepthFrameReady += new EventHandler<DepthImageFrameReadyEventArgs>(sensor_DepthFrameReady);
+
+
+            sensor.ColorStream.Enable();
+            sensor.ColorFrameReady += new EventHandler<ColorImageFrameReadyEventArgs>(sensor_ColorFrameReady);
+        }
+
+        void sensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+        {
+            bool receivedData = false;
+            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+            {
+                if (colorFrame == null)
+                {
+                    // The image processing took too long. More than 2 frames behind.
+                }
+                else
+                {
+
+                    this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
+                    colorFrame.CopyPixelDataTo(this.colorPixels);
+
+                    this.colorBitmap = new WriteableBitmap(this.sensor.ColorStream.FrameWidth, this.sensor.ColorStream.FrameHeight, 
+                        96.0, 96.0, PixelFormats.Bgr32, null);
+                    if (colorFrame != null)
+                    {
+                        // Write the pixel data into our bitmap
+                        this.colorBitmap.WritePixels(
+                          new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
+                          this.colorPixels,
+                          this.colorBitmap.PixelWidth * sizeof(int),
+                          0);
+                        colorImage.Source = this.colorBitmap;
+                    }
+                }
+            }
         }
 
         void sensor_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
@@ -65,21 +102,21 @@ namespace KinectDepthApplication1
                             pixels[colorIndex + BlueIndex] = intensity; //blue
                             pixels[colorIndex + GreenIndex] = intensity; //green
                             pixels[colorIndex + RedIndex] = intensity; //red
-                            pixels[colorIndex + AlphaIndex] = 255; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
                         }
                         else if (depth == -1)
                         {
                             pixels[colorIndex + BlueIndex] = 255; //blue
                             pixels[colorIndex + GreenIndex] = 0; //green
                             pixels[colorIndex + RedIndex] = 0; //red
-                            pixels[colorIndex + AlphaIndex] = 255; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
                         }
                         else
                         {
                             pixels[colorIndex + BlueIndex] = 0; //blue
                             pixels[colorIndex + GreenIndex] = 0; //green
                             pixels[colorIndex + RedIndex] = 0; //red
-                            pixels[colorIndex + AlphaIndex] = 255; // alpha
+                            pixels[colorIndex + AlphaIndex] = 255/2; // alpha
                         }
                     }
                     receivedData = true;

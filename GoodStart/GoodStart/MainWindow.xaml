@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="480" Width="640">
     <Grid>
-        <Image Name="depthImage"/>
+        <Image Name="colorImage" />
+        <Image Name="depthImage" />
     </Grid>
 </Window>
