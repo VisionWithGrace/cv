@@ -46,6 +46,7 @@ namespace KinectDepthApplication1
                     const int BlueIndex = 0;
                     const int GreenIndex = 1;
                     const int RedIndex = 2;
+                    const int AlphaIndex = 3;
 
                     for (int depthIndex = 0, colorIndex = 0;
                         depthIndex < rawDepthData.Length && colorIndex < pixels.Length;
@@ -58,24 +59,33 @@ namespace KinectDepthApplication1
                         // Map the distance to an intesity that can be represented in RGB
                         var intensity = CalculateIntensityFromDistance(depth);
 
-                        if (depth > 20 && depth < 1000)
+                        if (depth >= 0 && depth < 4000)
                         {
                             // Apply the intensity to the color channels
+                            pixels[colorIndex + BlueIndex] = intensity; //blue
+                            pixels[colorIndex + GreenIndex] = intensity; //green
+                            pixels[colorIndex + RedIndex] = intensity; //red
+                            pixels[colorIndex + AlphaIndex] = 255; // alpha
+                        }
+                        else if (depth == -1)
+                        {
                             pixels[colorIndex + BlueIndex] = 255; //blue
-                            pixels[colorIndex + GreenIndex] = 255; //green
-                            pixels[colorIndex + RedIndex] = 255; //red                    
+                            pixels[colorIndex + GreenIndex] = 0; //green
+                            pixels[colorIndex + RedIndex] = 0; //red
+                            pixels[colorIndex + AlphaIndex] = 255; // alpha
                         }
                         else
                         {
                             pixels[colorIndex + BlueIndex] = 0; //blue
                             pixels[colorIndex + GreenIndex] = 0; //green
                             pixels[colorIndex + RedIndex] = 0; //red
+                            pixels[colorIndex + AlphaIndex] = 255; // alpha
                         }
                     }
                     receivedData = true;
 
                     BitmapSource source = BitmapSource.Create(640, 480, 96, 96,
-                        PixelFormats.Gray16, null, pixels, 640 * 2);
+                        PixelFormats.Bgra32, null, pixels, 640 * 4);
 
                     depthImage.Source = source;
                 }
@@ -107,8 +117,8 @@ namespace KinectDepthApplication1
             // for the purposes of applying the resulting value
             // to RGB pixels.
             const int MaxDepthDistance = 4000;
-            const int MinDepthDistance = 850;
-            const int MaxDepthDistanceOffset = 3150;
+            const int MinDepthDistance = 800;
+            const int MaxDepthDistanceOffset = MaxDepthDistance - MinDepthDistance;
 
             int newMax = distance - MinDepthDistance;
             if (newMax > 0)
@@ -117,6 +127,5 @@ namespace KinectDepthApplication1
             else
                 return (byte)255;
         }
-
     }
 }

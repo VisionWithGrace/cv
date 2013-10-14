@@ -11,3 +11,14 @@ C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86
 C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart.exe
 C:\Users\Owner\documents\visual studio 2010\Projects\GoodStart\GoodStart\obj\x86\Debug\GoodStart.pdb
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\GoodStart.exe
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\GoodStart.pdb
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\bin\Debug\GoodStart.exe
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\bin\Debug\GoodStart.pdb
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\MainWindow.baml
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\App.g.cs
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\GoodStart_MarkupCompile.cache
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\GoodStart.g.resources
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\KinectDepthApplication1.Properties.Resources.resources
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Debug\GoodStart.csproj.GenerateResource.Cache
