@@ -1,0 +1,13 @@
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\bin\Debug\CoordinateMappingBasics-WPF.exe
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\bin\Debug\CoordinateMappingBasics-WPF.pdb
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\ResolveAssemblyReference.cache
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\MainWindow.baml
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\MainWindow.g.cs
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\App.g.cs
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\CoordinateMappingBasics-WPF_MarkupCompile.cache
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\CoordinateMappingBasics-WPF.g.resources
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.CoordinateMappingBasics.Properties.Resources.resources
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\GenerateResource.read.1.tlog
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\GenerateResource.write.1.tlog
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\CoordinateMappingBasics-WPF.exe
+C:\VisionWithGrace\CoordinateMappingBasics-WPF\obj\Debug\CoordinateMappingBasics-WPF.pdb
