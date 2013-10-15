@@ -4,6 +4,10 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
+using Emgu.CV;
+using Emgu.Util;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
 
 namespace KinectDepthApplication1
 {
