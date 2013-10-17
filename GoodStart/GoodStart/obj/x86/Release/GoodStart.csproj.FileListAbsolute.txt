@@ -1,0 +1,11 @@
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\bin\Release\GoodStart.exe
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\bin\Release\GoodStart.pdb
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\MainWindow.baml
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\MainWindow.g.cs
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\App.g.cs
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\GoodStart_MarkupCompile.cache
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\GoodStart.g.resources
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\KinectDepthApplication1.Properties.Resources.resources
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\GoodStart.csproj.GenerateResource.Cache
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\GoodStart.exe
+C:\Users\Nees\Documents\GitHub\cv\GoodStart\GoodStart\obj\x86\Release\GoodStart.pdb

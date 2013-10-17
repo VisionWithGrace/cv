@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="FacialMouseControl">
+</Property><Property Name="Solution File" Value="C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\FacialMouseControl.sln">
+</Property><Property Name="Date" Value="Wednesday, October 16, 2013">
+</Property><Property Name="Time" Value="21:23:18 PM">
+</Property></Properties><Event ErrorLevel="0" Project="FacialMouseControl" Source="FacialMouseControl.csproj" Description="Project file successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\FacialMouseControl.csproj">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Form1.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Form1.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Form1.Designer.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Program.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Properties\Resources.Designer.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Properties\Settings.Designer.cs" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Properties\Settings.settings" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Form1.resx" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Form1.resx">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="Properties\Resources.resx" Description="File successfully backed up as C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="FacialMouseControl.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FacialMouseControl" Source="FacialMouseControl.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FacialMouseControl" Source="FacialMouseControl.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

@@ -1,0 +1,9 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\FacialMouseControl.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\FacialMouseControl.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\FacialMouseControl.Form1.resources
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\FacialMouseControl.Properties.Resources.resources
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\GenerateResource.read.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\GenerateResource.write.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\FacialMouseControl.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FacialMouseControl\obj\Debug\FacialMouseControl.pdb

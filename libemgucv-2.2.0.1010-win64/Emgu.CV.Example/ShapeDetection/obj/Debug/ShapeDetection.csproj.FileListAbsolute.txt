@@ -1,0 +1,10 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\Emgu.CV.License.txt
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\pic3.png
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\ShapeDetection.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\ShapeDetection.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ShapeDetection.MainForm.resources
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ResGen.read.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ResGen.write.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ShapeDetection.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ShapeDetection\obj\Debug\ShapeDetection.pdb

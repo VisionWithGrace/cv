@@ -1,0 +1,5 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\HelloWorld.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\HelloWorld.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld\obj\Debug\HelloWorld.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld\obj\Debug\HelloWorld.pdb

@@ -1,0 +1,9 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\Emgu.CV.License.txt
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\CameraCapture.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\CameraCapture.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\CameraCapture.CameraCapture.resources
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\ResGen.read.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\ResGen.write.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\CameraCapture.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\CameraCapture\obj\Debug\CameraCapture.pdb

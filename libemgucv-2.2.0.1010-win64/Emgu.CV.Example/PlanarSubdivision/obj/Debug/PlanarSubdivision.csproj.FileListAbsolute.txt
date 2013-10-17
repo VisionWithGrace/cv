@@ -1,0 +1,6 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\Emgu.CV.License.txt
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\PlanarSubdivision.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\PlanarSubdivision.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\PlanarSubdivision\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\PlanarSubdivision\obj\Debug\PlanarSubdivision.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\PlanarSubdivision\obj\Debug\PlanarSubdivision.pdb

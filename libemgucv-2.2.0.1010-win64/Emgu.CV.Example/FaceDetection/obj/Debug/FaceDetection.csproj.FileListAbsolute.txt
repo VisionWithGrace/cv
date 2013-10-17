@@ -1,0 +1,9 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\Emgu.CV.License.txt
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\haarcascade_eye.xml
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\haarcascade_frontalface_alt_tree.xml
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\lena.jpg
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\FaceDetection.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\FaceDetection.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FaceDetection\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FaceDetection\obj\Debug\FaceDetection.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\FaceDetection\obj\Debug\FaceDetection.pdb

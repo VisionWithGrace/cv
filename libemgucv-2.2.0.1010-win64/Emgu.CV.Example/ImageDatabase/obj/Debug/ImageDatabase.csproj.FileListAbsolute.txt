@@ -1,0 +1,10 @@
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\ImageDatabase.exe.config
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\SqliteDB.xml
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\ImageDatabase.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\bin\ImageDatabase.pdb
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ResolveAssemblyReference.cache
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ImageDatabase.MainForm.resources
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ResGen.read.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ResGen.write.1.tlog
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ImageDatabase.exe
+C:\Emgu\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\ImageDatabase\obj\Debug\ImageDatabase.pdb
