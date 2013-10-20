@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Drawing.Imaging;
 
 using System.Diagnostics;
 using System.Globalization;
@@ -103,6 +105,7 @@ namespace HelloWorld
         private Image<Gray, Byte> emguOverlayedGrayDepth;
         private Image<Gray, float> emguProcessedGrayDepth;
         private Image<Bgra, Byte> emguRawColor;
+        private Bitmap colorBitmap;
         /// <summary>
         /// Open form
         /// </summary>
@@ -212,8 +215,11 @@ namespace HelloWorld
                 if (null != colorFrame)
                 {
                     // Copy the pixel data from the image to a temporary array
-                    colorFrame.CopyPixelDataTo(this.colorPixels);
-                    this.emguRawColor = new Image<Bgra, Byte>(colorFrame.Width, colorFrame.Height, new Bgra(255,0,255,255));
+                    // Pigeons
+                    //colorFrame.CopyPixelDataTo(this.colorPixels);
+                    //this.emguRawColor = new Image<Bgra, Byte>(colorFrame.Width, colorFrame.Height, new Bgra(255,0,255,255));
+                    this.colorBitmap = new Bitmap(ColorImageFrameToBitmap(colorFrame));
+                    this.emguRawColor = new Image<Bgra, byte>(colorBitmap);
                     colorReceived = true;
                 }
             }
@@ -255,7 +261,7 @@ namespace HelloWorld
                     }
                 }
                 emguDepthImageBox.Image = this.emguOverlayedDepth;
-                //this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
+                this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 this.emguOverlayedGrayDepth = this.emguOverlayedDepth.Convert<Gray, Byte>();
                 this.emguProcessedGrayDepth = new Image<Gray, float>(this.colorWidth, this.colorHeight, new Gray(0));
                 CvInvoke.cvSmooth(this.emguOverlayedGrayDepth, this.emguOverlayedGrayDepth, Emgu.CV.CvEnum.SMOOTH_TYPE.CV_MEDIAN, 5, 5, 9, 9);
@@ -288,6 +294,7 @@ namespace HelloWorld
                 Marshal.Copy(pixeldata, 0, ptr, Image.PixelDataLength);
                 bmap.UnlockBits(bmapdata);*/
                 emguColorImageBox.Image = this.emguRawColor;
+                emguColorProcessedImageBox.Image = this.emguRawColor;
                 
             }
         }
@@ -295,6 +302,25 @@ namespace HelloWorld
         private void emguColorImageBox_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private static Bitmap ColorImageFrameToBitmap(ColorImageFrame colorFrame)
+        {
+            byte[] pixelBuffer = new byte[colorFrame.PixelDataLength];
+            colorFrame.CopyPixelDataTo(pixelBuffer);
+
+            Bitmap bitmapFrame = new Bitmap(colorFrame.Width, colorFrame.Height,
+                PixelFormat.Format32bppRgb);
+
+            BitmapData bitmapData = bitmapFrame.LockBits(new Rectangle(0, 0,
+                                             colorFrame.Width, colorFrame.Height),
+            ImageLockMode.WriteOnly, bitmapFrame.PixelFormat);
+
+            IntPtr intPointer = bitmapData.Scan0;
+            Marshal.Copy(pixelBuffer, 0, intPointer, colorFrame.PixelDataLength);
+
+            bitmapFrame.UnlockBits(bitmapData);
+            return bitmapFrame;
         }
     }
 }
