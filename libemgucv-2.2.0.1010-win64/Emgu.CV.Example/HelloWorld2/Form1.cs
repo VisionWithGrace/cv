@@ -98,9 +98,11 @@ namespace HelloWorld
         /// </summary>
         private int colorHeight;
 
-        private Image<Bgra, Byte> emguOverlayedDepth;
-        private Image<Bgra, Byte> emguRawColor;
 
+        private Image<Bgra, Byte> emguOverlayedDepth;
+        private Image<Gray, Byte> emguOverlayedGrayDepth;
+        private Image<Gray, float> emguProcessedGrayDepth;
+        private Image<Bgra, Byte> emguRawColor;
         /// <summary>
         /// Open form
         /// </summary>
@@ -158,6 +160,7 @@ namespace HelloWorld
                 // Add an event handler to be called whenever there is new depth frame data
                 this.sensor.AllFramesReady += this.SensorAllFramesReady;
 
+                
                 // Start the sensor!
                 try
                 {
@@ -252,6 +255,12 @@ namespace HelloWorld
                     }
                 }
                 emguDepthImageBox.Image = this.emguOverlayedDepth;
+                //this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
+                this.emguOverlayedGrayDepth = this.emguOverlayedDepth.Convert<Gray, Byte>();
+                this.emguProcessedGrayDepth = new Image<Gray, float>(this.colorWidth, this.colorHeight, new Gray(0));
+                CvInvoke.cvSmooth(this.emguOverlayedGrayDepth, this.emguOverlayedGrayDepth, Emgu.CV.CvEnum.SMOOTH_TYPE.CV_MEDIAN, 5, 5, 9, 9);
+                CvInvoke.cvSobel(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 1, 0, 3);
+                emguDepthProcessedImageBox.Image = this.emguProcessedGrayDepth;
             }
 
             // do our processing outside of the using block
@@ -262,16 +271,30 @@ namespace HelloWorld
                 //this.emguRawColor = new Image<Bgra, Byte>(this.colorWidth, this.colorHeight, new Bgra(0,255,0,255));
                 
                 /*long pixelIndex = 0;
-                for (int j = 0; j < this.emguRawColor.Width; j++)
+                for (int j = 0; j < this.emguRawColor.Height; j++)
                 {
-                    for (int i = 0; i < this.emguRawColor.Height; i++, pixelIndex += 4)
+                    for (int i = 0; i < this.emguRawColor.Width; i++, pixelIndex += 4)
                     {
-                        emguRawColor[i, j] = new Bgra(this.colorPixels[pixelIndex], this.colorPixels[(pixelIndex + 1)], this.colorPixels[(pixelIndex + 2)], this.colorPixels[(pixelIndex + 3)]);
+                        //emguRawColor[j, i] = new Bgra(this.colorPixels[pixelIndex], this.colorPixels[(pixelIndex + 1)], this.colorPixels[(pixelIndex + 2)], this.colorPixels[(pixelIndex + 3)]);
+                        emguRawColor[j, i] = new Bgra(255, 0, 255, 255);
                     }
                 }*/
+                /*Bitmap bmap = new Bitmap(this.colorWidth, this.colorHeight, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+                System.Drawing.Imaging.BitmapData bmapdata = bmap.LockBits(
+                    new Rectangle(0, 0, this.colorWidth, this.colorHeight),
+                    System.Drawing.Imaging.ImageLockMode.WriteOnly,
+                    bmap.PixelFormat);
+                IntPtr ptr = bmapdata.Scan0;
+                Marshal.Copy(pixeldata, 0, ptr, Image.PixelDataLength);
+                bmap.UnlockBits(bmapdata);*/
                 emguColorImageBox.Image = this.emguRawColor;
                 
             }
+        }
+
+        private void emguColorImageBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

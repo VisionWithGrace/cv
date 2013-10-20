@@ -18,3 +18,8 @@ C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.exe.config
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.exe
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.pdb
+C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.exe
+C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.pdb
+C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
+C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.Form1.resources
+C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
