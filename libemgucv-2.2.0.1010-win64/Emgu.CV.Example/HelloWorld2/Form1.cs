@@ -103,9 +103,10 @@ namespace HelloWorld
 
         private Image<Bgra, Byte> emguOverlayedDepth;
         private Image<Gray, Byte> emguOverlayedGrayDepth;
-        private Image<Gray, float> emguProcessedGrayDepth;
+        private Image<Gray, Byte> emguProcessedGrayDepth;
         private Image<Bgra, Byte> emguRawColor;
         private Bitmap colorBitmap;
+        private bool firstFrame = true;
         /// <summary>
         /// Open form
         /// </summary>
@@ -218,8 +219,10 @@ namespace HelloWorld
                     // Pigeons
                     //colorFrame.CopyPixelDataTo(this.colorPixels);
                     //this.emguRawColor = new Image<Bgra, Byte>(colorFrame.Width, colorFrame.Height, new Bgra(255,0,255,255));
+                    
                     this.colorBitmap = new Bitmap(ColorImageFrameToBitmap(colorFrame));
                     this.emguRawColor = new Image<Bgra, byte>(colorBitmap);
+                    this.firstFrame = false;
                     colorReceived = true;
                 }
             }
@@ -263,9 +266,10 @@ namespace HelloWorld
                 emguDepthImageBox.Image = this.emguOverlayedDepth;
                 this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 this.emguOverlayedGrayDepth = this.emguOverlayedDepth.Convert<Gray, Byte>();
-                this.emguProcessedGrayDepth = new Image<Gray, float>(this.colorWidth, this.colorHeight, new Gray(0));
+                this.emguProcessedGrayDepth = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 CvInvoke.cvSmooth(this.emguOverlayedGrayDepth, this.emguOverlayedGrayDepth, Emgu.CV.CvEnum.SMOOTH_TYPE.CV_MEDIAN, 5, 5, 9, 9);
-                CvInvoke.cvSobel(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 1, 0, 3);
+                //CvInvoke.cvSobel(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 1, 0, 3);
+                CvInvoke.cvCanny(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 100, 50, 3);
                 emguDepthProcessedImageBox.Image = this.emguProcessedGrayDepth;
             }
 
