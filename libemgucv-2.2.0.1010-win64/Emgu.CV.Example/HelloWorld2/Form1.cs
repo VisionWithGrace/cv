@@ -263,14 +263,46 @@ namespace HelloWorld
                         }
                     }
                 }
+                //right one
                 emguDepthImageBox.Image = this.emguOverlayedDepth;
+                
                 this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 this.emguOverlayedGrayDepth = this.emguOverlayedDepth.Convert<Gray, Byte>();
                 this.emguProcessedGrayDepth = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 CvInvoke.cvSmooth(this.emguOverlayedGrayDepth, this.emguOverlayedGrayDepth, Emgu.CV.CvEnum.SMOOTH_TYPE.CV_MEDIAN, 5, 5, 9, 9);
                 //CvInvoke.cvSobel(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 1, 0, 3);
                 CvInvoke.cvCanny(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 100, 50, 3);
+
+                int blobCount = 0;
+
+
+                using (MemStorage stor = new MemStorage())
+                        {
+ 
+                            Contour<System.Drawing.Point> contours = this.emguProcessedGrayDepth.FindContours(
+                             Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_SIMPLE,
+                             Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_EXTERNAL,
+                             stor);
+ 
+                            for (int i = 0; contours != null; contours = contours.HNext)
+                            {
+                                i++;
+ 
+                                if ((contours.Area > Math.Pow(0, 2)) && (contours.Area < Math.Pow(100, 2)))
+                                {
+                                    MCvBox2D box = contours.GetMinAreaRect();
+                                    blobCount++;
+                                    
+                                    this.emguProcessedGrayDepth.Draw(box, new Gray(100), 2);
+                                    blobCount++;
+                                }
+                            }
+                        }
+ 
+
+
                 emguDepthProcessedImageBox.Image = this.emguProcessedGrayDepth;
+           //     this.emguProcessedGrayDepth
             }
 
             // do our processing outside of the using block
@@ -297,8 +329,26 @@ namespace HelloWorld
                 IntPtr ptr = bmapdata.Scan0;
                 Marshal.Copy(pixeldata, 0, ptr, Image.PixelDataLength);
                 bmap.UnlockBits(bmapdata);*/
-                emguColorImageBox.Image = this.emguRawColor;
+
+                //left two
+                /*
+                MCvScalar lower = new MCvScalar(0.0,0.0,0.0);
+                MCvScalar upper = new MCvScalar(1.0,1.0,1.0);
+
+                Image<Gray, byte> black = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
+                Image<Gray, byte> mask = new Image<Gray,byte>(this.colorWidth, this.colorHeight, new Gray(0));
+                Image<Bgra, byte> test = this.emguRawColor;
+
+             //                   CvInvoke.cvCanny(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 0, 255, 3);
+                CvInvoke.cvNot(this.emguProcessedGrayDepth, mask);
+                                  
+               //                 CvInvoke.cvAdd(black, test, test, mask);
+          
+                */
+                emguColorImageBox.Image = this.emguRawColor;   
                 emguColorProcessedImageBox.Image = this.emguRawColor;
+
+
                 
             }
         }
