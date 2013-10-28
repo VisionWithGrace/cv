@@ -106,7 +106,8 @@ namespace HelloWorld
         private Image<Gray, Byte> emguProcessedGrayDepth;
         private Image<Bgra, Byte> emguRawColor;
         private Bitmap colorBitmap;
-        private bool firstFrame = true;
+        private bool firstDepthFrame = true;
+        private bool firstColorFrame = true;
         /// <summary>
         /// Open form
         /// </summary>
@@ -202,18 +203,18 @@ namespace HelloWorld
 
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
             {
-                if (null != depthFrame)
+                if (null != depthFrame && this.firstDepthFrame)
                 {
                     // Copy the pixel data from the image to a temporary array
                     depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
-
+                    this.firstDepthFrame = false;
                     depthReceived = true;
                 }
             }
 
             using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
             {
-                if (null != colorFrame)
+                if (null != colorFrame && this.firstColorFrame)
                 {
                     // Copy the pixel data from the image to a temporary array
                     // Pigeons
@@ -222,7 +223,7 @@ namespace HelloWorld
                     
                     this.colorBitmap = new Bitmap(ColorImageFrameToBitmap(colorFrame));
                     this.emguRawColor = new Image<Bgra, byte>(colorBitmap);
-                    this.firstFrame = false;
+                    this.firstColorFrame = false;
                     colorReceived = true;
                 }
             }
@@ -266,13 +267,65 @@ namespace HelloWorld
                 //right one
                 emguDepthImageBox.Image = this.emguOverlayedDepth;
                 
-                this.emguOverlayedGrayDepth = new Image<Gray, Byte>(this.colorWidth, this.colorHeight, new Gray(0));
+                this.emguOverlayedGrayDepth = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 this.emguOverlayedGrayDepth = this.emguOverlayedDepth.Convert<Gray, Byte>();
                 this.emguProcessedGrayDepth = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
                 CvInvoke.cvSmooth(this.emguOverlayedGrayDepth, this.emguOverlayedGrayDepth, Emgu.CV.CvEnum.SMOOTH_TYPE.CV_MEDIAN, 5, 5, 9, 9);
                 //CvInvoke.cvSobel(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 1, 0, 3);
                 CvInvoke.cvCanny(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 100, 50, 3);
 
+                Point seedPoint;
+                this.emguOverlayedGrayDepth = this.emguProcessedGrayDepth.Copy();
+                for (int fillY = this.colorHeight - 1; fillY > 0; fillY--)
+                {
+                    for (int fillX = this.colorWidth - 1; fillX > 0; fillX--)
+                    {
+                        seedPoint = new Point(fillX, fillY);
+                        if (this.emguOverlayedGrayDepth[fillY,fillX].Intensity >= 200)
+                        {
+                            if (fillX < this.colorWidth - 1)
+                            {
+                                this.emguProcessedGrayDepth[fillY, fillX + 1] = new Emgu.CV.Structure.Gray(255);
+                            }
+                            if (fillX > 0)
+                            {
+                                this.emguProcessedGrayDepth[fillY, fillX - 1] = new Emgu.CV.Structure.Gray(255);
+                            }
+                            if (fillY < this.colorHeight - 1)
+                            {
+                                this.emguProcessedGrayDepth[fillY + 1, fillX] = new Emgu.CV.Structure.Gray(255);
+                            }
+                            if (fillY > 0)
+                            {
+                                this.emguProcessedGrayDepth[fillY - 1, fillX] = new Emgu.CV.Structure.Gray(255);
+                            }
+                        }
+                    }
+                }
+
+                // Flood-fill method for boxes
+                IntPtr src = this.emguProcessedGrayDepth;
+	            MCvScalar newVal;
+	            MCvScalar loDiff = new MCvScalar(0);
+	            MCvScalar upDiff = new MCvScalar(0);
+                MCvConnectedComp comp = new MCvConnectedComp();
+	            int flags = 4;
+	            IntPtr mask = new Image<Gray, byte>(this.colorWidth+2, this.colorHeight + 2, new Gray (0));
+                int whatColor = 1;
+                for (int fillY = this.colorHeight - 1; fillY > 0; fillY -= this.colorHeight / 15)
+                {
+                    for (int fillX = this.colorWidth - 1; fillX > 0; fillX -= this.colorWidth / 15, whatColor++)
+                    {
+                        seedPoint = new Point(fillX, fillY);
+                        if (this.emguProcessedGrayDepth[seedPoint].Intensity == 0)
+                        {
+                            newVal = new MCvScalar(whatColor);
+                            CvInvoke.cvFloodFill(src, seedPoint, newVal, loDiff, upDiff, out comp, flags, mask);
+                        }
+                    }
+                }
+                
+                /*//Blob detection method for boxes
                 int blobCount = 0;
 
 
@@ -298,7 +351,7 @@ namespace HelloWorld
                                 }
                             }
                         }
- 
+                */
 
 
                 emguDepthProcessedImageBox.Image = this.emguProcessedGrayDepth;
