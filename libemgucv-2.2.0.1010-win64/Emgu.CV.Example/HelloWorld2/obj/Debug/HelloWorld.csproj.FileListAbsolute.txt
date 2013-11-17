@@ -23,3 +23,11 @@ C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.pdb
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.Form1.resources
 C:\Users\Nees\Documents\GitHub\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.exe
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\bin\HelloWorld.pdb
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\ResolveAssemblyReference.cache
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\HelloWorld.Form1.resources
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\GenerateResource.read.1.tlog
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\ResGen.read.1.tlog
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\GenerateResource.write.1.tlog
+C:\VisionWithGrace\cv\libemgucv-2.2.0.1010-win64\Emgu.CV.Example\HelloWorld2\obj\Debug\ResGen.write.1.tlog

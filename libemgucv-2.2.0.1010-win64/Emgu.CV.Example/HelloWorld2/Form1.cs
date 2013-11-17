@@ -104,11 +104,15 @@ namespace HelloWorld
         private Image<Bgra, Byte> emguOverlayedDepth;
         private Image<Gray, Byte> emguOverlayedGrayDepth;
         private Image<Gray, Byte> emguProcessedGrayDepth;
+        private Image<Gray, Byte> emguDepthWithBoxes;
         private Image<Bgra, Byte> emguRawColor;
+        private Image<Bgra, Byte> emguProcessedColor;
         private Bitmap colorBitmap;
         private bool firstDepthFrame = true;
         private bool firstColorFrame = true;
         //private List<PointF>[] pointList;
+
+        private HashSet<int> GoodColors;
 
         private int frameLimit = 60;
         private int frameCounter = 0;
@@ -169,6 +173,8 @@ namespace HelloWorld
                 // Add an event handler to be called whenever there is new depth frame data
                 this.sensor.AllFramesReady += this.SensorAllFramesReady;
 
+                this.GoodColors = new HashSet<int>();
+
                 // Start the sensor!
                 try
                 {
@@ -228,7 +234,8 @@ namespace HelloWorld
                     
                     this.colorBitmap = new Bitmap(ColorImageFrameToBitmap(colorFrame));
                     this.emguRawColor = new Image<Bgra, byte>(colorBitmap);
-                    this.firstColorFrame = false;
+                    this.emguProcessedColor = new Image<Bgra, byte>(colorBitmap);
+                    this.GoodColors.Clear();
                     colorReceived = true;
                 }
             }
@@ -345,45 +352,34 @@ namespace HelloWorld
                     }
                 }
 
-
-                for (int i = 1; i < 256; i++)
+                this.emguDepthWithBoxes = this.emguProcessedGrayDepth.Copy();
+                double boxColor = 127;
+                this.GoodColors.Clear();
+                int boxCounter = 0;
+                for (int i = 1; i < 255; i++)
                 {
                     if (pointList[i].Count > 100)
                     {
                         Rectangle temp = Emgu.CV.PointCollection.BoundingRectangle(pointList[i].ToArray());
-                        this.emguProcessedGrayDepth.Draw(temp, new Gray(127),2);
+                        if ((temp.Height < 0.6 * this.emguProcessedGrayDepth.Height)
+                            && (temp.Width < 0.6 * this.emguProcessedGrayDepth.Width))
+                        {
+                            this.emguDepthWithBoxes.Draw(temp, new Gray(boxColor), 2);
+                        }
+                        boxCounter++;
+                        if (pointList[i].Count < 4000)
+                        {
+                            this.GoodColors.Add(i);
+                        }
+                        
                     }
                 }
-                /*//Blob detection method for boxes
-                int blobCount = 0;
+               /* if (this.GoodColors.Count() != boxCounter)
+                {
+                    throw new ExternalException();
+                }*/
 
-
-                using (MemStorage stor = new MemStorage())
-                        {
- 
-                            Contour<System.Drawing.Point> contours = this.emguProcessedGrayDepth.FindContours(
-                             Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_SIMPLE,
-                             Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_EXTERNAL,
-                             stor);
- 
-                            for (int i = 0; contours != null; contours = contours.HNext)
-                            {
-                                i++;
- 
-                                if ((contours.Area > Math.Pow(0, 2)) && (contours.Area < Math.Pow(100, 2)))
-                                {
-                                    MCvBox2D box = contours.GetMinAreaRect();
-                                    blobCount++;
-                                    
-                                    this.emguProcessedGrayDepth.Draw(box, new Gray(100), 2);
-                                    blobCount++;
-                                }
-                            }
-                        }
-                */
-
-
-                emguDepthProcessedImageBox.Image = this.emguProcessedGrayDepth;
+                emguDepthProcessedImageBox.Image = this.emguDepthWithBoxes;
            //     this.emguProcessedGrayDepth
             }
 
@@ -391,47 +387,37 @@ namespace HelloWorld
             // so that we return resources to the kinect as soon as possible
             if (true == colorReceived)
             {
-                //this.emguRawColor = new Image<Bgra, Byte>(this.colorWidth, this.colorHeight);
-                //this.emguRawColor = new Image<Bgra, Byte>(this.colorWidth, this.colorHeight, new Bgra(0,255,0,255));
-                
-                /*long pixelIndex = 0;
-                for (int j = 0; j < this.emguRawColor.Height; j++)
+                //Assign raw color
+                this.emguRawColor = this.emguRawColor.Resize(.5, INTER.CV_INTER_NN).Copy();
+                this.emguProcessedColor = this.emguProcessedColor.Resize(0.5, INTER.CV_INTER_NN);
+
+                emguColorImageBox.Image = this.emguRawColor; 
+  
+                //Assign colored pixels
+                for (int fillY = this.emguProcessedColor.Height - 1; fillY > 0; fillY--)
                 {
-                    for (int i = 0; i < this.emguRawColor.Width; i++, pixelIndex += 4)
+                    for (int fillX = this.emguProcessedColor.Width - 1; fillX > 0; fillX--)
                     {
-                        //emguRawColor[j, i] = new Bgra(this.colorPixels[pixelIndex], this.colorPixels[(pixelIndex + 1)], this.colorPixels[(pixelIndex + 2)], this.colorPixels[(pixelIndex + 3)]);
-                        emguRawColor[j, i] = new Bgra(255, 0, 255, 255);
+                        Point seedPoint = new Point(fillX, fillY);
+                        if (!this.GoodColors.Contains((int)this.emguProcessedGrayDepth[seedPoint].Intensity))
+                        {
+                            double b = this.emguProcessedColor[seedPoint].Blue;
+                            double g = this.emguProcessedColor[seedPoint].Green;
+                            double r = this.emguProcessedColor[seedPoint].Red;
+                            double a = this.emguProcessedColor[seedPoint].Alpha;
+
+                            this.emguProcessedColor[seedPoint] = new Bgra(b,g,r,a/8);
+                        }
+                        /*else
+                        {
+                            this.emguProcessedColor[seedPoint] = new Bgra(0, 255, 0, 255);
+                        }*/
                     }
-                }*/
-                /*Bitmap bmap = new Bitmap(this.colorWidth, this.colorHeight, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-                System.Drawing.Imaging.BitmapData bmapdata = bmap.LockBits(
-                    new Rectangle(0, 0, this.colorWidth, this.colorHeight),
-                    System.Drawing.Imaging.ImageLockMode.WriteOnly,
-                    bmap.PixelFormat);
-                IntPtr ptr = bmapdata.Scan0;
-                Marshal.Copy(pixeldata, 0, ptr, Image.PixelDataLength);
-                bmap.UnlockBits(bmapdata);*/
+                }
+                this.GoodColors.Clear();
 
-                //left two
-                /*
-                MCvScalar lower = new MCvScalar(0.0,0.0,0.0);
-                MCvScalar upper = new MCvScalar(1.0,1.0,1.0);
-
-                Image<Gray, byte> black = new Image<Gray, byte>(this.colorWidth, this.colorHeight, new Gray(0));
-                Image<Gray, byte> mask = new Image<Gray,byte>(this.colorWidth, this.colorHeight, new Gray(0));
-                Image<Bgra, byte> test = this.emguRawColor;
-
-             //                   CvInvoke.cvCanny(this.emguOverlayedGrayDepth, this.emguProcessedGrayDepth, 0, 255, 3);
-                CvInvoke.cvNot(this.emguProcessedGrayDepth, mask);
-                                  
-               //                 CvInvoke.cvAdd(black, test, test, mask);
-          
-                */
-                emguColorImageBox.Image = this.emguRawColor;   
-                emguColorProcessedImageBox.Image = this.emguRawColor;
-
-
-                
+                //Assign processed color
+                emguColorProcessedImageBox.Image = this.emguProcessedColor;
             }
         }
 
